@@ -29,6 +29,7 @@ window.speechListener = require('annyang');
 Vue.component('dashboard', require('./components/Dashboard.vue'));
 Vue.component('cryptoboard', require('./components/Cryptoboard.vue'));
 Vue.component('checklists', require('./components/Checklists.vue'));
+Vue.component('speedcoder', require('./components/Speedcoder.vue'));
 
 Vue.filter('toCurrency', function (value) {
     if (typeof value !== "number") {

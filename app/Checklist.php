@@ -6,7 +6,7 @@ use App\Observers\SortedObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-class Checklist extends Sortable
+class Checklist extends Model
 {
     protected $fillable = [
         'name'
@@ -29,7 +29,6 @@ class Checklist extends Sortable
      */
     protected static function boot() {
         parent::boot();
-
         static::addGlobalScope('user', function (Builder $builder) {
             $builder->where('user_id', '=', \Auth::id());
         });

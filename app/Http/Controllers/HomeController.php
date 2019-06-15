@@ -116,6 +116,10 @@ class HomeController extends Controller
         return view('checklists');
     }
 
+    public function speedcoder(Request $request) {
+        return view('speedcoder');
+    }
+
     public function manageApi(Request $request) {
         return view('manage_api');
     }

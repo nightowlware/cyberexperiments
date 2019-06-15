@@ -6,7 +6,7 @@ use App\Observers\SortedObserver;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 
-class ListItem extends Sortable
+class ListItem extends Model
 {
     public $timestamps = false;
 

@@ -25,6 +25,7 @@ $defineGetPost('home');
 $defineGetPost('crypto');
 $defineGetPost('echo');
 $defineGetPost('fileshare');
+$defineGetPost('speedcoder');
 $defineGetPost('checklists');
 $defineGetPost('profile');
 $defineGetPost('manageApi');
