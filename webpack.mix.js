@@ -11,8 +11,29 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+// mix.webpackConfig({
+//     profile: false,
+//     stats: {
+//         hash: true,
+//         version: true,
+//         timings: true,
+//         assets: true,
+//         chunks: true,
+//         modules: true,
+//         reasons: true,
+//         children: true,
+//         source: false,
+//         errors: true,
+//         errorDetails: true,
+//         warnings: true,
+//         publicPath: true
+//     },
+// });
+
+mix.js('resources/assets/js/app.js', 'public/js').extract();
+// mix.js('resources/assets/js/app.js', 'public/js');
+
+mix.sass('resources/assets/sass/app.scss', 'public/css');
 
 mix.copy('resources/assets/images', 'public/images');
 

@@ -62,7 +62,7 @@
 <script>
     export default {
         components: {
-            'checklist': require('./Checklist.vue')
+            'checklist': require('./Checklist.vue').default
         },
 
         mounted() {
@@ -75,13 +75,14 @@
                     this.checklists = res.data;
                     // console.info(this.checklists);
                 }).catch((err) => {console.warn(err)});
-
-                // update the child's state
-                this.$refs.childChecklist.fetchItems();
             },
 
             checklistSelected({id, name}, event) {
                 this.currentChecklistId = id;
+
+                // update the child's state
+                console.log(this.currentChecklistId);
+                this.$refs.childChecklist.fetchItems();
             },
 
             adderClicked(event) {

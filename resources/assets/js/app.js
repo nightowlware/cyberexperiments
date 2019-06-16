@@ -26,10 +26,10 @@ window.speechListener = require('annyang');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('dashboard', require('./components/Dashboard.vue'));
-Vue.component('cryptoboard', require('./components/Cryptoboard.vue'));
-Vue.component('checklists', require('./components/Checklists.vue'));
-Vue.component('speedcoder', require('./components/Speedcoder.vue'));
+Vue.component('speedcoder', require('./components/Speedcoder.vue').default);
+Vue.component('dashboard', require('./components/Dashboard.vue').default);
+Vue.component('cryptoboard', require('./components/Cryptoboard.vue').default);
+Vue.component('checklists', require('./components/Checklists.vue').default);
 
 Vue.filter('toCurrency', function (value) {
     if (typeof value !== "number") {
@@ -51,17 +51,17 @@ Vue.use(require('vue-long-press-directive'), {duration:1500});
 ///////////////
 Vue.component(
     'passport-clients',
-    require('./components/passport/Clients.vue')
+    require('./components/passport/Clients.vue').default
 );
 
 Vue.component(
     'passport-authorized-clients',
-    require('./components/passport/AuthorizedClients.vue')
+    require('./components/passport/AuthorizedClients.vue').default
 );
 
 Vue.component(
     'passport-personal-access-tokens',
-    require('./components/passport/PersonalAccessTokens.vue')
+    require('./components/passport/PersonalAccessTokens.vue').default
 );
 
 
@@ -87,3 +87,7 @@ window.ConfirmDelete = function(msg) {
     return confirm("Are you sure you want to delete " + msg + " ?");
 };
 
+// Samples a random element from arrays
+Array.prototype.randomElement = function() {
+    return this[Math.floor(Math.random() * this.length)];
+};

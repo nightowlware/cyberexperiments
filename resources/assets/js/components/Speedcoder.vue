@@ -2,23 +2,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="jumbotron">
-                <div style="display: flex; justify-content: space-between">
-                    <div>
-                        <h3 v-for="(val, key) in sort(cryptos)"> {{key}} : {{ val.price | toCurrency }}</h3>
-                        <!--<h1>Bitcoin: {{ cryptos.bitcoin.price | toCurrency}}</h1>-->
-                        <!--<h1>Litecoin: {{ cryptos.litecoin.price | toCurrency}}</h1>-->
-                        <!--<h1>Ethereum: {{ cryptos.ethereum.price | toCurrency}}</h1>-->
-                    </div>
-                    <div class="flex-center">
-                        <h1>
-                            <i class="hugefont far"
-                               :class="[isConnected ? 'fa-check-circle' : 'fa-times-circle', isConnected ? 'green' : 'red']">
-                            </i>
-                        </h1>
-                    </div>
-                    <!--<div class="fill">-->
-                        <!--<img :src="require('../../images/flask.png')"/>-->
-                    <!--</div>-->
+                <div v-html="this.codeSnippet">
+
                 </div>
             </div>
         </div>
@@ -28,59 +13,22 @@
 <script>
     export default {
         mounted() {
-            this.webSocket = this.createWebSocket();
+            this.fetchCodeSnippet('monad', 'haskell', 150, 200);
         },
 
         methods: {
-            createWebSocket() {
-                let w = new WebSocket("wss://ws-feed.gdax.com");
+            fetchCodeSnippet(keyword, language, minLoc, maxLoc) {
+                const apiUrl = `https://searchcode.com/api/codesearch_I/?src=2&q=${keyword}%20lang:${language}&loc=${minLoc}&loc2=${maxLoc}`;
+                this.langauge = language;
 
-                w.onclose = () => { this.isConnected = false; };
-
-                w.onmessage = (msg) => {
-                    let data = JSON.parse(msg.data);
-                    if (data.type === "heartbeat") {
-                        return;
-                    }
-                    this.parseTicker(data);
-                };
-
-                w.onopen = () => {
-                    let params = {
-                        type: "subscribe",
-                        channels: [{"name": "ticker", "product_ids": this.getAllSymbols() },
-                                   {"name": "heartbeat", "product_ids": this.getAllSymbols()}]
-                    };
-                    w.send(JSON.stringify(params));
-                    this.isConnected = true;
-                };
-
-                return w;
-            },
-
-            parseTicker(data) {
-                for (let c of Object.keys(this.cryptos)) {
-                    if (data.product_id === this.cryptos[c].symbol) {
-                        this.cryptos[c].price = data.price;
-                    }
-                }
-            },
-
-            getAllSymbols() {
-                let arr = [];
-                for (let c of Object.keys(this.cryptos)) {
-                    if (this.cryptos[c].symbol) {
-                        arr.push(this.cryptos[c].symbol);
-                    }
-                }
-                return arr;
-            },
-
-            sort(cryptos) {
-                return Object.keys(cryptos).sort().reduce((a, v) => {
-                    a[v] = cryptos[v];
-                    return a;
-                }, {});
+                axiosSearchCode.get(apiUrl).then((res) => {
+                    const codeSampleId = res.data.results.randomElement().id;
+                    return axiosSearchCode.get(`https://searchcode.com/codesearch/raw/${codeSampleId}`);
+                }).then(rawCode => {
+                    this.codeSnippet = rawCode.data;
+                }).catch(err => {
+                    this.codeSnippet = err;
+                });
             }
         },
 
@@ -89,15 +37,8 @@
 
         data() {
             return {
-                // Note: for some hitherto unknown reason, the websocket object
-                // is not reactive (in the Vuejs sense).
-                webSocket: null,
-                isConnected: false,
-                cryptos: {
-                    Bitcoin: { symbol: "BTC-USD", price: 0 },
-                    Litecoin: { symbol: "LTC-USD", price: 0 },
-                    Ethereum: { symbol: "ETH-USD", price: 0 },
-                }
+                codeSnippet: "Code to be filled here ... ",
+                language: "",
             };
         },
 
