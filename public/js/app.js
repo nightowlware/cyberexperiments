@@ -728,6 +728,16 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var prismjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prismjs */ "./node_modules/prismjs/prism.js");
+/* harmony import */ var prismjs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prismjs__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prismjs_components_prism_haskell__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prismjs/components/prism-haskell */ "./node_modules/prismjs/components/prism-haskell.js");
+/* harmony import */ var prismjs_components_prism_haskell__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_haskell__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prismjs/components/prism-clike */ "./node_modules/prismjs/components/prism-clike.js");
+/* harmony import */ var prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_clike__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prismjs/components/prism-java */ "./node_modules/prismjs/components/prism-java.js");
+/* harmony import */ var prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prismjs_components_prism_java__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vue_prism_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-prism-editor */ "./node_modules/vue-prism-editor/dist/VuePrismEditor.common.js");
+/* harmony import */ var vue_prism_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_prism_editor__WEBPACK_IMPORTED_MODULE_4__);
 //
 //
 //
@@ -738,11 +748,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
+
+
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    PrismEditor: vue_prism_editor__WEBPACK_IMPORTED_MODULE_4___default.a
+  },
   mounted: function mounted() {
-    this.fetchCodeSnippet('monad', 'haskell', 150, 200);
+    this.fetchCodeSnippet('object', 'haskell', 150, 200);
   },
   methods: {
     fetchCodeSnippet: function fetchCodeSnippet(keyword, language, minLoc, maxLoc) {
@@ -2511,11 +2527,16 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row justify-content-center" }, [
-    _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "jumbotron" }, [
-        _c("div", { domProps: { innerHTML: _vm._s(this.codeSnippet) } })
-      ])
-    ])
+    _c(
+      "div",
+      { staticClass: "col-md-12" },
+      [
+        _c("prism-editor", {
+          attrs: { code: this.codeSnippet, readonly: true }
+        })
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []

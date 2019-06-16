@@ -1,19 +1,27 @@
 <template>
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="jumbotron">
-                <div v-html="this.codeSnippet">
-
-                </div>
-            </div>
+            <!--<div class="jumbotron">-->
+            <prism-editor :code="this.codeSnippet" :readonly="true"></prism-editor>
+            <!--</div>-->
         </div>
     </div>
 </template>
 
 <script>
+    import Prism from 'prismjs';
+    import 'prismjs/components/prism-haskell';
+    import 'prismjs/components/prism-clike';
+    import 'prismjs/components/prism-java';
+    import PrismEditor from 'vue-prism-editor';
+
     export default {
+        components: {
+            PrismEditor
+        },
+
         mounted() {
-            this.fetchCodeSnippet('monad', 'haskell', 150, 200);
+            this.fetchCodeSnippet('object', 'haskell', 150, 200);
         },
 
         methods: {

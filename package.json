@@ -30,6 +30,8 @@
   },
   "dependencies": {
     "dropzone": "^5.5.1",
-    "phaser": "^3.17.0"
+    "phaser": "^3.17.0",
+    "prismjs": "^1.16.0",
+    "vue-prism-editor": "^0.2.1"
   }
 }
