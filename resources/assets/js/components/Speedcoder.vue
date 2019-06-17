@@ -1,13 +1,15 @@
 <template>
-    <div>
-    <prism-editor 
-        :code="this.codeSnippet" 
-        :readonly="true"
-        :lineNumbers="false" 
-        :autoStyleLineNumbers="false">
+    <main class="main max-w-lg mx-auto my-0 p-0">
+        <prism-editor 
+            class="code-editor"
+            :code="this.codeSnippet" 
+            :readonly="true"
+            :lineNumbers="true" 
+            :language="js"
+            :autoStyleLineNumbers="true">
 
-    </prism-editor>
-    </div>
+        </prism-editor>
+    </main>
 </template>
 
 <script>
@@ -16,6 +18,7 @@
     import 'prismjs/components/prism-clike';
     import 'prismjs/components/prism-java';
     import PrismEditor from 'vue-prism-editor';
+    import "vue-prism-editor/dist/VuePrismEditor.css";
 
     export default {
         components: {
@@ -58,5 +61,7 @@
 </script>
 
 <style>
-
+.code-editor {
+    height: 500px;
+}
 </style>

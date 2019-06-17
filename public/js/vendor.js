@@ -7088,6 +7088,25 @@ module.exports = closest;
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-prism-editor/dist/VuePrismEditor.css":
+/*!***********************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-prism-editor/dist/VuePrismEditor.css ***!
+  \***********************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".prism-editor-wrapper code{font-family:inherit;line-height:inherit}.prism-editor-wrapper{width:100%;height:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:start;-ms-flex-align:start;align-items:flex-start;overflow:auto;-o-tab-size:1.5em;tab-size:1.5em;-moz-tab-size:1.5em}.prism-editor__line-numbers{height:100%;overflow:hidden;-ms-flex-negative:0;flex-shrink:0;padding-top:4px;margin-top:0}.prism-editor__line-number{text-align:right;white-space:nowrap}.prism-editor__code{margin-top:0!important;margin-bottom:0!important;-webkit-box-flex:2;-ms-flex-positive:2;flex-grow:2;min-height:100%;-webkit-box-sizing:border-box;box-sizing:border-box;-o-tab-size:4;tab-size:4;-moz-tab-size:4;outline:none}pre.prism-editor__code:focus{outline:none}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/lib/css-base.js":
 /*!*************************************************!*\
   !*** ./node_modules/css-loader/lib/css-base.js ***!
@@ -43148,6 +43167,36 @@ var component = normalizeComponent(
 
 /******/ })["default"];
 //# sourceMappingURL=VuePrismEditor.common.js.map
+
+/***/ }),
+
+/***/ "./node_modules/vue-prism-editor/dist/VuePrismEditor.css":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue-prism-editor/dist/VuePrismEditor.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader??ref--6-1!../../postcss-loader/src??ref--6-2!./VuePrismEditor.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-prism-editor/dist/VuePrismEditor.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
