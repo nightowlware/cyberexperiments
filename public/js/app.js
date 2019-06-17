@@ -748,6 +748,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -758,7 +760,7 @@ __webpack_require__.r(__webpack_exports__);
     PrismEditor: vue_prism_editor__WEBPACK_IMPORTED_MODULE_4___default.a
   },
   mounted: function mounted() {
-    this.fetchCodeSnippet('object', 'haskell', 150, 200);
+    this.fetchCodeSnippet('object', 'javascript', 150, 200);
   },
   methods: {
     fetchCodeSnippet: function fetchCodeSnippet(keyword, language, minLoc, maxLoc) {
@@ -2526,18 +2528,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row justify-content-center" }, [
-    _c(
-      "div",
-      { staticClass: "col-md-12" },
-      [
-        _c("prism-editor", {
-          attrs: { code: this.codeSnippet, readonly: true }
-        })
-      ],
-      1
-    )
-  ])
+  return _c(
+    "div",
+    [
+      _c("prism-editor", {
+        attrs: {
+          code: this.codeSnippet,
+          readonly: true,
+          lineNumbers: false,
+          autoStyleLineNumbers: false
+        }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

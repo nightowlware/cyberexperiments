@@ -1,10 +1,12 @@
 <template>
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <!--<div class="jumbotron">-->
-            <prism-editor :code="this.codeSnippet" :readonly="true"></prism-editor>
-            <!--</div>-->
-        </div>
+    <div>
+    <prism-editor 
+        :code="this.codeSnippet" 
+        :readonly="true"
+        :lineNumbers="false" 
+        :autoStyleLineNumbers="false">
+
+    </prism-editor>
     </div>
 </template>
 
@@ -21,7 +23,7 @@
         },
 
         mounted() {
-            this.fetchCodeSnippet('object', 'haskell', 150, 200);
+            this.fetchCodeSnippet('object', 'javascript', 150, 200);
         },
 
         methods: {
